@@ -60,6 +60,79 @@ fn main()
   //let p3 = *p2;
 
   println!("Value of p1: {} and value of p2: {}", mem::size_of_val(&p1), mem::size_of_val(&p2));
-  println!("Value of p1: {} and value of p2: {}", p2.y, (*p2).y);
+  println!("Value of p1: {} and value of p2: {}", p2.x, (*p2).y);
 
+
+
+
+
+
+
+
+
+  if_statement();
+
+  do_some_loop();
+
+  do_for_loop();
+
+  try_match();
+
+}
+
+fn try_match()
+{
+
+  let country_code = 1865;
+  let country = match country_code
+  {
+    44 => "UK",
+    46 => "Sweden",
+    7 => "Russia",
+    1..=999 => "Unknown",
+    _ => "invalid"
+  };
+  println!("Country: {} has code: {}", country, country_code);
+
+}
+
+fn do_for_loop()
+{
+  for x in 5..15
+  {
+    println!("x is {}", x);
+  }
+  
+  for (i,val) in (1..11 ).enumerate()
+  {
+    println!("element {} is {}", i,val);
+  }
+
+}
+
+
+fn do_some_loop()
+{
+  let mut x = 1;
+  while x < 1000
+  {
+    x *= 2;
+    println!("x = {}", x);
+
+    if x == 64 { break; }
+
+  }
+
+}
+
+fn if_statement()
+{
+  let temp = 5;
+  if temp > 30
+  {
+    println!("really hot outside!")
+  } else if temp < 10
+  {
+    println!("it's really cold")
+  }
 }
