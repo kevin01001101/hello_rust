@@ -63,23 +63,55 @@ fn main()
   println!("Value of p1: {} and value of p2: {}", p2.x, (*p2).y);
 
 
-
-
-
-
-
-
-
   if_statement();
-
   do_some_loop();
-
   do_for_loop();
-
   try_match();
+
+  points();
+
+  enums();
 
 }
 
+fn points() 
+{
+  let p = My3dPoint { x: 3.0, y: 4.0, z: 5.0};
+
+  println!("Point is {}", p.x);
+}
+
+struct My3dPoint {
+  x: f64,
+  y: f64,
+  z: f64  
+}
+
+
+enum Color
+{
+  Red,
+  Green,
+  Blue,
+  RgbColor(u8,u8,u8),
+  CymkColor{cyan:u8,yellow:u8,magenta:u8,black:u8}
+}
+
+fn enums() 
+{
+  let c:Color = Color::CymkColor{yellow:255,black:0,cyan:0,magenta:0};
+  match c 
+  {
+    Color::Red => println!("Color is red!"),
+    Color::Green => println!("Color is red!"),
+    //Color::Blue => println!("Color is red!")
+    Color::RgbColor(0,0,0) => println!("Color is black"),
+    Color::CymkColor{cyan:_, magenta:_, yellow:255, black:_} => println!("Color is YELLOW"),
+    _ => println!("Unknown oclor")
+
+  }
+
+}
 fn try_match()
 {
 
