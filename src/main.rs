@@ -1,5 +1,7 @@
 use std::mem;
+mod pm;
 
+pub use crate::pm::pattern_matching;
 
 struct Point {
   x: f64,
@@ -23,56 +25,82 @@ fn add() -> i32
 
 fn main() 
 {  
-  let a:u8 = 123; // 8 bits
-  let mut b:u8 = 43; 
+  pattern_matching::match_this();
 
-  println!("Hello {}", a);
 
-  println!("Before {}", b);
-  b = 55;
-  println!("After {}", b);
+  // let a:u8 = 123; // 8 bits
+  // let mut b:u8 = 43; 
 
-  let c = 1234596;
+  // println!("Hello {}", a);
 
-  println!("Value of {} with a size of {}", c, mem::size_of_val(&c));
+  // println!("Before {}", b);
+  // b = 55;
+  // println!("After {}", b);
+
+  // let c = 1234596;
+
+  // println!("Value of {} with a size of {}", c, mem::size_of_val(&c));
   
 
-  let z:isize = 123;
-  let size_of_z = mem::size_of_val(&z);
-  println!("z = {}, takes up {} bytes, {}-bit OS",
-    z, size_of_z, size_of_z * 8);
+  // let z:isize = 123;
+  // let size_of_z = mem::size_of_val(&z);
+  // println!("z = {}, takes up {} bytes, {}-bit OS",
+  //   z, size_of_z, size_of_z * 8);
 
-  let d = 'x';
-  println!("Value of {} with a size of {}", d, mem::size_of_val(&d));
+  // let d = 'x';
+  // println!("Value of {} with a size of {}", d, mem::size_of_val(&d));
 
-  let f = 2.5;
-  println!("Value of {} with a size of {}", f, mem::size_of_val(&f));
+  // let f = 2.5;
+  // println!("Value of {} with a size of {}", f, mem::size_of_val(&f));
 
-  let f:f32 = 2.5;  //f64
-  println!("Value of {} with a size of {}", f, mem::size_of_val(&f));
+  // let f:f32 = 2.5;  //f64
+  // println!("Value of {} with a size of {}", f, mem::size_of_val(&f));
 
-  let g = 0 == 1;
-  println!("Value of {} with a size of {}", g, mem::size_of_val(&g));
+  // let g = 0 == 1;
+  // println!("Value of {} with a size of {}", g, mem::size_of_val(&g));
 
-  println!("Add is {}", add());
-  let p1 = origin();
-  let p2 = Box::new(origin());
-  //let p3 = *p2;
+  // println!("Add is {}", add());
+  // let p1 = origin();
+  // let p2 = Box::new(origin());
+  // //let p3 = *p2;
 
-  println!("Value of p1: {} and value of p2: {}", mem::size_of_val(&p1), mem::size_of_val(&p2));
-  println!("Value of p1: {} and value of p2: {}", p2.x, (*p2).y);
+  // println!("Value of p1: {} and value of p2: {}", mem::size_of_val(&p1), mem::size_of_val(&p2));
+  // println!("Value of p1: {} and value of p2: {}", p2.x, (*p2).y);
 
 
-  if_statement();
-  do_some_loop();
-  do_for_loop();
-  try_match();
+  // // if_statement();
+  // // do_some_loop();
+  // // do_for_loop();
+  // // try_match();
 
-  points();
+  // points();
 
-  enums();
+  // enums();
+  // option();
+}
+
+fn option()
+{
+  // Option<T>
+
+  let x = 3.0;
+  let y:f64 = 0.0;
+
+  let result:Option<f64> = if y != 0.0 { Some(x/y) } else { None };
+  println!("{:?}", result);
+
+  match result 
+  {
+    Some(z) => println!("{} / {} = {}", x, y, z),
+    _ => println!("cannot divide")
+  }
+
+
+
+
 
 }
+
 
 fn points() 
 {
